@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,26 +14,42 @@
     <title>Wikimedia Home</title>
 </head>
 <body class="bg-blueGray-50">
-    <header>
-        <nav class="flex justify-between">
-            <div class="">
-                <img src="view/image/logo.png" class="w-32">
-            </div>
+<header>
+          <nav class="flex justify-between">
+              <div class="">
+                  <img src="view/image/logo.png" class="w-32">
+              </div>
 
-            
-  
-            <div class="p-4">
-                <ul class="flex gap-4 mt-4">
-                    <li><a href="#" class="text-green-500 text-lg font-semibold hover:text-blue-600">Home</a></li>
-                    <li><a href="view/feed.php" class="text-blue-600 text-lg font-semibold hover:text-green-500">Feed</a></li>
-                    <li><a href="view/categories.php" class="text-blue-600 text-lg font-semibold hover:text-green-500">Categories</a></li>
-                    <li><a href="view/login.php" class="text-blue-600 text-lg font-semibold hover:text-green-500 underline decoration-green-500">Log in</a></li>
-                    <li><a href="view/register.php" class="text-blue-600 text-lg font-semibold hover:text-green-500 underline decoration-green-500">Register</a></li>
-                </ul>
-            </div>
-        </nav>
-        
-    </header>
+              <div class="p-4">
+                  <ul class="flex gap-4 mt-4">
+                      <li><a href="" class="text-blue-600 text-lg font-semibold hover:text-green-500">Home</a></li>
+                      <li><a href="view/feed.php" class="text-blue-600 text-lg font-semibold hover:text-green-500">Feed</a></li>
+					  <li><a href="categories.php" class="text-blue-600 text-lg font-semibold hover:text-green-500">Categories</a></li>
+                      <?php
+if (!isset($_SESSION['email'])) {
+
+
+                      ?>
+                      <li><a href="view/login.php" class="text-blue-600 text-lg font-semibold hover:text-green-500 underline decoration-green-500">Log in</a></li>
+                      <li><a href="view/register.php" class="text-blue-600 text-lg font-semibold hover:text-green-500 underline decoration-green-500">Register</a></li>
+                      <?php
+                      }else{
+                        ?>
+                        <li><a href="" class="text-blue-600 text-lg font-semibold hover:text-green-500 underline decoration-green-500">add article</a></li>
+                        <li><a href="view/logout.php" class="text-blue-600 text-lg font-semibold hover:text-green-500 underline decoration-green-500">Log out</a></li>
+                        
+
+                        <?php
+                      }
+                      ?>
+                  </ul>
+              </div>
+    
+              
+          </nav>
+
+          
+</header>
  
     <section class="relative pt-16 bg-blueGray-50">
     <div class="container mx-auto text-center">

@@ -30,5 +30,12 @@ class UserDAO{
             return false;
         }
     }
+    public function Get_user_id($email){
+        $stmt = $this->db->prepare("SELECT * FROM users WHERE email = :email");
+        $stmt->bindParam(":email",$email);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['user_id'];
+    }
     
 }

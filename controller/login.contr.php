@@ -26,6 +26,7 @@ if(isset($_POST['login'])){
     if($login == true){
         session_start();
         $_SESSION['email'] = $email;
+        $_SESSION['user_logged_in'] = true;
         
         header("location:../view/feed.php");
     }else{

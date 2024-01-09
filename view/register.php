@@ -7,25 +7,7 @@
     <title>Register</title>
 </head>
 <body class="bg-blueGray-50">
-  <header>
-          <nav class="flex justify-between">
-              <div class="">
-                  <img src="image/logo.png" class="w-32">
-              </div>
-
-              
-    
-              <div class="p-4">
-                  <ul class="flex gap-4 mt-4">
-                      <li><a href="../index.php" class="text-blue-600 text-lg font-semibold hover:text-green-500">Home</a></li>
-                      <li><a href="categories.php" class="text-blue-600 text-lg font-semibold hover:text-green-500">Categories</a></li>
-                      <li><a href="view/login.php" class="text-blue-600 text-lg font-semibold hover:text-green-500 underline decoration-green-500">Log in</a></li>
-                      <li><a href="view/register.php" class="text-green-500 text-lg font-semibold hover:text-blue-600 underline decoration-blue-500">Register</a></li>
-                  </ul>
-              </div>
-          </nav>
-          
-      </header>
+<?php include 'includes/nav.php'; ?>
 <section class="bg-blueGray-50">
   <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
     

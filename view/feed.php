@@ -6,39 +6,16 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Feed</title>
 </head>
+<?php include 'includes/nav.php'; ?>
 <body class="bg-blueGray-50">
-<header>
-          <nav class="flex justify-between">
-              <div class="">
-                  <img src="image/logo.png" class="w-32">
-              </div>
 
-              
-    
-              <div class="p-4">
-              <ul class="flex gap-4 mt-4">
-                    <li><a href="../index.php" class="text-blue-600 text-lg font-semibold hover:text-green-500">Home</a></li>
-                    <li><a href="" class="text-green-600 text-lg font-semibold hover:text-green-500">Feed</a></li>
-                    <li><a href="categories.php" class="text-blue-600 text-lg font-semibold hover:text-green-500">Categories</a></li>
-
-
-                    <li><a href="login.php" class="text-blue-600 text-lg font-semibold hover:text-green-500 underline decoration-green-500">Log in</a></li>
-                    <li><a href="register.php" class="text-blue-600 text-lg font-semibold hover:text-green-500 underline decoration-green-500">Register</a></li>
-
-
-                </ul>
-              </div>
-          </nav>
-
-          
-</header>
     <section class="flex justify-center">
             <form action="" enctype="" method="">
         <div class="flex items-center p-6 space-x-6   rounded-xl">              
         <input class="bg-gray-100 outline-none" type="text" placeholder="Article name or keyword..." />
         
         <div class="flex w-32 rounded-lg text-gray-500 font-semibold cursor-pointer">
-        <select class="w-full" name="categorie" id="" >
+        <select class="w-full" name="category" id="">
         <option value="id">Categories</option>
         </select>
         </div>
@@ -220,6 +197,67 @@
     </ul>
   </div>
 </footer>
+<div id="modal" class="flex justify-center fixed z-10 inset-0 overflow-y-auto hidden">
+  <div class="flex items-center justify-center min-h-screen">
+    <div class="relative bg-white w-96 p-6 rounded shadow-lg">
+      <!-- Modal Close Button -->
+      <button
+        id="closeModal"
+        class="absolute top-0 right-0 mt-4 mr-4 text-gray-500 hover:text-gray-700 cursor-pointer"
+        onclick="closeModal()"
+      >
+        &times;
+      </button>
+
+      <!-- Modal Content - Form -->
+      <form class="space-y-4">
+        <!-- Form Fields -->
+        <div class="mb-4">
+          <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
+          <input
+            type="text"
+            id="title"
+            name="title"
+            class="mt-1 p-2 w-full border rounded-md"
+            placeholder="Enter the title"
+          />
+        </div>
+
+        <div class="mb-4">
+          <label for="content" class="block text-sm font-medium text-gray-700">Content</label>
+          <textarea
+            id="content"
+            name="content"
+            class="mt-1 p-2 w-full border rounded-md"
+            placeholder="Enter the content"
+          ></textarea>
+        </div>
+
+        <!-- Image Input Field -->
+        <div class="mb-4">
+          <label for="image" class="block text-sm font-medium text-gray-700">Image</label>
+          <input
+            type="file"
+            id="image"
+            name="image"
+            accept="image/*"
+            class="mt-1 p-2 w-full border rounded-md"
+          />
+        </div>
+
+        <!-- Submit Button -->
+        <button
+          type="submit"
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="javascript/main.js"></script>
 </body>
 
 </html>
