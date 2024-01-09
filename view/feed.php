@@ -1,3 +1,6 @@
+<?php
+include '../controller/category.contr.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +21,10 @@
         
         <div class="flex w-32 rounded-lg text-gray-500 font-semibold cursor-pointer">
         <select class="w-full" name="category" id="">
-        <option value="id">Categories</option>
+          <?php foreach($categories as $categorie){ ?>
+            <option value="<?php echo $categorie['cat_id']; ?>"><?php echo $categorie['cat_name']; ?></option>
+            <?php } ?>
+            <option selected value="id">ALL</option>
         </select>
         </div>
         <div class="bg-green-400 py-3 px-5 text-white font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer">
