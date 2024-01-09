@@ -26,14 +26,10 @@ create table tags(
     tag_name varchar(255)
 );
 
-ALTER TABLE wikis
-ADD COLUMN user_id INT,
-ADD FOREIGN KEY (user_id) REFERENCES users(user_id);
+ALTER TABLE wikis ADD COLUMN user_id INT,ADD FOREIGN KEY (user_id) REFERENCES users(user_id);
 
 
-ALTER TABLE wikis
-ADD COLUMN cat_id INT,
-ADD FOREIGN KEY (cat_id) REFERENCES categories(cat_id);
+ALTER TABLE wikis ADD COLUMN cat_id INT,ADD FOREIGN KEY (cat_id) REFERENCES categories(cat_id);
 
 
 CREATE TABLE wiki_tags (
@@ -43,5 +39,15 @@ CREATE TABLE wiki_tags (
     FOREIGN KEY (wiki_id) REFERENCES wikis(wiki_id),
     FOREIGN KEY (tag_id) REFERENCES tags(tag_id)
 );
+alter table wikis add column status int DEFAULT 0;
+INSERT INTO categories (cat_name) 
+    VALUES 
+        ('Arts and Entertainment'),
+        ('Science and Technology'),
+        ('Geography and Travel'),
+        ('History'),
+        ('Education and Learning');
 
+alter table users modify column role varchar(50) DEFAULT 'auteur';
 
+    

@@ -16,14 +16,37 @@
             <div class="">
                 <img src="view/image/logo.png" class="w-32">
             </div>
+
+            
+  
             <div class="p-4">
                 <ul class="flex gap-4 mt-4">
-                    <li><a href="view/login.php" class="text-blue-600 text-lg font-['Open_Sans']">Log in</a></li>
-                    <li><a href="view/register.php" class="text-blue-600 text-lg font-['Open_Sans']">Register</a></li>
+                    <li><a href="#" class="text-blue-600 text-lg font-semibold hover:text-green-500">Home</a></li>
+                    <li><a href="view/categories.php" class="text-blue-600 text-lg font-semibold hover:text-green-500">Categories</a></li>
+                    <li><a href="view/login.php" class="text-blue-600 text-lg font-semibold hover:text-green-500 underline decoration-green-500">Log in</a></li>
+                    <li><a href="view/register.php" class="text-blue-600 text-lg font-semibold hover:text-green-500 underline decoration-green-500">Register</a></li>
                 </ul>
             </div>
         </nav>
+        
     </header>
+    <section class="flex justify-center">
+        <form action="" enctype="" method="">
+    <div class="flex items-center p-6 space-x-6   rounded-xl">              
+    <input class="bg-gray-100 outline-none" type="text" placeholder="Article name or keyword..." />
+    
+    <div class="flex w-32 rounded-lg text-gray-500 font-semibold cursor-pointer">
+     <select class="w-full" name="categorie" id="" >
+      <option value="id">Categories</option>
+     </select>
+    </div>
+    <div class="bg-green-400 py-3 px-5 text-white font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer">
+      <button>Search</button>
+    </form>
+    </div>
+  </div>
+    
+    </section>
     <section class="relative pt-16 bg-blueGray-50">
     <div class="container mx-auto text-center">
             <h1 class="text-4xl font-semibold mb-2 text-blue-600">Got an idea? Join Wikimedia</h1>

@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Register</title>
+    <title>Log in</title>
 </head>
 <body class="bg-blueGray-50">
-  <header>
+<header>
           <nav class="flex justify-between">
               <div class="">
                   <img src="image/logo.png" class="w-32">
@@ -19,30 +19,23 @@
                   <ul class="flex gap-4 mt-4">
                       <li><a href="../index.php" class="text-blue-600 text-lg font-semibold hover:text-green-500">Home</a></li>
                       <li><a href="categories.php" class="text-blue-600 text-lg font-semibold hover:text-green-500">Categories</a></li>
-                      <li><a href="view/login.php" class="text-blue-600 text-lg font-semibold hover:text-green-500 underline decoration-green-500">Log in</a></li>
-                      <li><a href="view/register.php" class="text-green-500 text-lg font-semibold hover:text-blue-600 underline decoration-blue-500">Register</a></li>
+                      <li><a href="view/login.php" class="text-green-500 text-lg font-semibold hover:text-blue-600 underline decoration-green-500">Log in</a></li>
+                      <li><a href="view/register.php" class="text-blue-600 text-lg font-semibold hover:text-green-500 underline decoration-blue-500">Register</a></li>
                   </ul>
               </div>
           </nav>
           
-      </header>
+</header>
 <section class="bg-blueGray-50">
   <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
     
       <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
               <h1 class="text-xl text-center     font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                  Create and account
+                  Log in to your account
               </h1>
-              <form class="space-y-4 md:space-y-6" action="../controller/signup.contr.php" method="POST" enctype="multipart/form-data">
-                  <div>
-                      <label for="firstname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your firstname</label>
-                      <input type="text" name="firstname" id="firstname" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="First name" required="">
-                  </div>
-                  <div>
-                      <label for="lastname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your lastname</label>
-                      <input type="text" name="lastname" id="lastname" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Last name" required="">
-                  </div>
+              <form class="space-y-4 md:space-y-6" action="" method="POST" enctype="multipart/form-data">
+                 
                   <div>
                       <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
                       <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" required="">
@@ -52,17 +45,14 @@
                       <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
                       <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
                   </div>
-                  <div>
-                      <label for="confirm-password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm password</label>
-                      <input type="password" name="confirm-password" id="confirm-password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
-                  </div>
+                  
                  
                  
                   <div class="flex justify-center">
-                  <button type="submit" name="create" class="focus:outline-none text-white bg-green-500 hover:bg-green-700 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 ">Create an account</button>
+                  <button type="submit" name="create" class="focus:outline-none text-white bg-green-500 hover:bg-green-700 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 ">Log in</button>
                 </div>
                   <p class="text-sm font-light text-gray-500 dark:text-gray-400">
-                      Already have an account? <a href="#" class="font-medium text-green-500 hover:underline dark:text-primary-500">Login here</a>
+                      you don't have an account? <a href="#" class="font-medium text-green-500 hover:underline dark:text-primary-500">register here</a>
                   </p>
               </form>
           </div>
@@ -173,6 +163,6 @@
     </ul>
   </div>
 </footer>
-
+    
 </body>
 </html>
