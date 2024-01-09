@@ -17,5 +17,5 @@ class CategoryDAO{
         return $result;
     }
 
-
+    
 }

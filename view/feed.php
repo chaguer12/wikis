@@ -1,5 +1,6 @@
 <?php
 include '../controller/category.contr.php';
+include '../controller/wiki.contr.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +25,7 @@ include '../controller/category.contr.php';
           <?php foreach($categories as $categorie){ ?>
             <option value="<?php echo $categorie['cat_id']; ?>"><?php echo $categorie['cat_name']; ?></option>
             <?php } ?>
-            <option selected value="id">ALL</option>
+            <option selected value="*">ALL</option>
         </select>
         </div>
         <div class="bg-green-400 py-3 px-5 text-white font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer">
@@ -35,6 +36,9 @@ include '../controller/category.contr.php';
         
     </section>
     <section class="flex flex-row flex-wrap mx-auto">
+      <?php
+          //foreach($wiki as $article){
+      ?>
 <div class="container mx-auto text-center p-8">
             <h1 class="text-4xl font-semibold mb-2 text-blue-600">Explore latest articles</h1>
             <p class="text-lg text-gray-400 mb-8">we are bringing you the latest articles</p>
@@ -100,6 +104,9 @@ include '../controller/category.contr.php';
   
   
   </div>
+  <?php
+ // }
+  ?>
 </section>
 <footer>
   <div class="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
@@ -218,7 +225,7 @@ include '../controller/category.contr.php';
       </button>
 
       <!-- Modal Content - Form -->
-      <form class="space-y-4">
+      <form class="space-y-4" enctype="multipart/form-data" method="post" action="../controller/wiki.contr.php">
         <!-- Form Fields -->
         <div class="mb-4">
           <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
@@ -240,6 +247,15 @@ include '../controller/category.contr.php';
             placeholder="Enter the content"
           ></textarea>
         </div>
+        <div class="mb-4">
+          <label for="content" class="block text-sm font-medium text-gray-700">Category</label>
+          <select class="w-full" name="category" id="">
+          <?php foreach($categories as $categorie){ ?>
+            <option value="<?php echo $categorie['cat_id']; ?>"><?php echo $categorie['cat_name']; ?></option>
+            <?php } ?>
+            
+        </select>
+        </div>
 
         <!-- Image Input Field -->
         <div class="mb-4">
@@ -257,6 +273,7 @@ include '../controller/category.contr.php';
         <button
           type="submit"
           class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          name="add"
         >
           Submit
         </button>

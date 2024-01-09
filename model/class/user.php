@@ -8,7 +8,7 @@ class User{
     private $role;
     private $image;
 
-    public function __construct($userid,$prenom,$nom,$email,$pass,$role,$image){
+    public function __construct($userid = null,$prenom = null,$nom = null,$email = null,$pass = null,$role = null,$image = null){
         $this->user_id=$userid;
         $this->prenom=$prenom;
         $this->nom=$nom;
