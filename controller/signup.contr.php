@@ -45,7 +45,12 @@ $user =  new UserDAO();
                 }
                 
         }else{
-            $user->Signup($prenom,$nom,$email,$password);
+            $login =$user->Signup($prenom,$nom,$email,$password);
+            if($login == true){
+
+            }else{
+                
+            }
         }
 
 

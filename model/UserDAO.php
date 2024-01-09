@@ -19,10 +19,11 @@ class UserDAO{
     }
     public function verifyUser($email,$pass){
         $stmt = $this->db->prepare("SELECT * FROM users WHERE email = :email");
-        $stmt->bindParam('!email',$email);
+        $stmt->bindParam(':email',$email);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         if (password_verify($pass, $result['pass'])){
+
             return true;
 
         }else{

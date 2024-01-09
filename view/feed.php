@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Log in</title>
+    <title>Feed</title>
 </head>
 <body class="bg-blueGray-50">
 <header>
@@ -16,48 +16,104 @@
               
     
               <div class="p-4">
-                  <ul class="flex gap-4 mt-4">
-                      <li><a href="../index.php" class="text-blue-600 text-lg font-semibold hover:text-green-500">Home</a></li>
-                      <li><a href="feed.php" class="text-blue-600 text-lg font-semibold hover:text-green-500">Feed</a></li>
-                      <li><a href="categories.php" class="text-blue-600 text-lg font-semibold hover:text-green-500">Categories</a></li>
-                      <li><a href="login.php" class="text-green-500 text-lg font-semibold hover:text-blue-600 underline decoration-green-500">Log in</a></li>
-                      <li><a href="register.php" class="text-blue-600 text-lg font-semibold hover:text-green-500 underline decoration-blue-500">Register</a></li>
-                  </ul>
+              <ul class="flex gap-4 mt-4">
+                    <li><a href="../index.php" class="text-blue-600 text-lg font-semibold hover:text-green-500">Home</a></li>
+                    <li><a href="" class="text-green-600 text-lg font-semibold hover:text-green-500">Feed</a></li>
+                    <li><a href="categories.php" class="text-blue-600 text-lg font-semibold hover:text-green-500">Categories</a></li>
+
+
+                    <li><a href="login.php" class="text-blue-600 text-lg font-semibold hover:text-green-500 underline decoration-green-500">Log in</a></li>
+                    <li><a href="register.php" class="text-blue-600 text-lg font-semibold hover:text-green-500 underline decoration-green-500">Register</a></li>
+
+
+                </ul>
               </div>
           </nav>
+
           
 </header>
-<section class="bg-blueGray-50">
-  <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-    
-      <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-          <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-              <h1 class="text-xl text-center     font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                  Log in to your account
-              </h1>
-              <form class="space-y-4 md:space-y-6" action="../controller/login.contr.php" method="POST" enctype="multipart/form-data">
-                 
-                  <div>
-                      <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
-                      <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" required="">
-                      
-                  </div>
-                  <div>
-                      <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-                      <input type="password" name="pass" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
-                  </div>
-                  
-                 
-                 
-                  <div class="flex justify-center">
-                  <button type="submit" name="login" class="focus:outline-none text-white bg-green-500 hover:bg-green-700 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 ">Log in</button>
-                </div>
-                  <p class="text-sm font-light text-gray-500 dark:text-gray-400">
-                      you don't have an account? <a href="#" class="font-medium text-green-500 hover:underline dark:text-primary-500">register here</a>
-                  </p>
-              </form>
-          </div>
+    <section class="flex justify-center">
+            <form action="" enctype="" method="">
+        <div class="flex items-center p-6 space-x-6   rounded-xl">              
+        <input class="bg-gray-100 outline-none" type="text" placeholder="Article name or keyword..." />
+        
+        <div class="flex w-32 rounded-lg text-gray-500 font-semibold cursor-pointer">
+        <select class="w-full" name="categorie" id="" >
+        <option value="id">Categories</option>
+        </select>
+        </div>
+        <div class="bg-green-400 py-3 px-5 text-white font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer">
+        <button>Search</button>
+        </form>
+        </div>
+    </div>
+        
+    </section>
+    <section class="flex flex-row flex-wrap mx-auto">
+<div class="container mx-auto text-center p-8">
+            <h1 class="text-4xl font-semibold mb-2 text-blue-600">Explore latest articles</h1>
+            <p class="text-lg text-gray-400 mb-8">we are bringing you the latest articles</p>
+        </div>
+  <!-- Single Card Component -->
+  <div
+    class="transition-all duration-150 flex w-full px-4 py-6 md:w-1/2 lg:w-1/3"
+  >
+    <div
+      class="flex flex-col items-stretch min-h-full pb-4 mb-6 transition-all duration-150 bg-white rounded-lg shadow-lg hover:shadow-2xl"
+    >
+      <div class="md:flex-shrink-0">
+        <img
+          src="https://www.unfe.org/wp-content/uploads/2019/04/SM-placeholder-1024x512.png"
+          alt="Blog Cover"
+          class="object-fill w-full rounded-lg rounded-b-none md:h-56"
+        />
       </div>
+      <div class="flex items-center justify-between px-4 py-2 overflow-hidden">
+        <span class="text-xs font-medium text-blue-600 uppercase">
+          Web Programming
+        </span>
+        
+      </div>
+      <hr class="border-gray-300" />
+      <div class="flex flex-wrap items-center flex-1 px-4 py-1 text-center mx-auto">
+        <a href="#" class="hover:underline">
+          <h2 class="text-2xl font-bold tracking-normal text-gray-800">
+            How to Yawn in 7 Days
+          </h2>
+        </a>
+      </div>
+      <hr class="border-gray-300" />
+      <p
+        class="flex flex-row flex-wrap w-full px-4 py-2 overflow-hidden text-sm text-justify text-gray-700"
+      >
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, magni
+        fugiat, odit incidunt necessitatibus aut nesciunt exercitationem aliquam
+        id voluptatibus quisquam maiores officia sit amet accusantium aliquid
+        quo obcaecati quasi.
+      </p>
+      <hr class="border-gray-300" />
+      <section class="px-4 py-2 mt-2">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center flex-1">
+            <img
+              class="object-cover h-10 rounded-full"
+              src="https://thumbs.dreamstime.com/b/default-avatar-photo-placeholder-profile-icon-eps-file-easy-to-edit-default-avatar-photo-placeholder-profile-icon-124557887.jpg"
+              alt="Avatar"
+            />
+            <div class="flex flex-col mx-2">
+              <a href="" class="font-semibold text-gray-700 hover:underline">
+                Fajrian Aidil Pratama
+              </a>
+              <span class="mx-1 text-xs text-gray-600">28 Sep 2020</span>
+            </div>
+          </div>
+          
+        </div>
+      </section>
+    </div>
+  </div>
+  
+  
   </div>
 </section>
 <footer>
@@ -164,6 +220,6 @@
     </ul>
   </div>
 </footer>
-    
 </body>
+
 </html>

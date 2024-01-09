@@ -18,7 +18,8 @@
               <div class="p-4">
                   <ul class="flex gap-4 mt-4">
                       <li><a href="../index.php" class="text-blue-600 text-lg font-semibold hover:text-green-500">Home</a></li>
-                      <li><a href="" class="text-green-500 text-lg font-semibold hover:text-blue-600">Categories</a></li>
+                      <li><a href="feed.php" class="text-blue-600 text-lg font-semibold hover:text-green-500">Feed</a></li>
+					  <li><a href="" class="text-green-500 text-lg font-semibold hover:text-blue-600">Categories</a></li>
                       <li><a href="login.php" class="text-blue-600 text-lg font-semibold hover:text-green-500 underline decoration-green-500">Log in</a></li>
                       <li><a href="register.php" class="text-blue-600 text-lg font-semibold hover:text-green-500 underline decoration-green-500">Register</a></li>
                       
