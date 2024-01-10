@@ -19,5 +19,11 @@ class WikiDAO{
         $stmt->execute();
 
     }
+    public function CountWikis(){
+        $stmt = $this->db->query("SELECT count(wiki_id) as count FROM `wikis`;");
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result; 
+    }
    
 }

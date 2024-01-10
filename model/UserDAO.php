@@ -37,5 +37,18 @@ class UserDAO{
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result['user_id'];
     }
+    public function Get_user_role($email){
+        $stmt = $this->db->prepare("SELECT * FROM users WHERE email = :email");
+        $stmt->bindParam(":email",$email);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['role'];
+    }
+    public function CountUsers(){
+        $stmt = $this->db->query("SELECT count(user_id) as count FROM `users`;");
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result; 
+    }
     
 }

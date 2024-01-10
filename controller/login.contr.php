@@ -23,9 +23,11 @@ if(isset($_POST['login'])){
         
 }else{
     $login = $user->verifyUser($email,$pass);
+    $role = $user->Get_user_role($email);
     if($login == true){
         session_start();
         $_SESSION['email'] = $email;
+        $_SESSION['role'] = $role;
         $_SESSION['user_logged_in'] = true;
         
         header("location:../view/feed.php");
