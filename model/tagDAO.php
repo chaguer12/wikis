@@ -27,5 +27,6 @@ class TagDAO{
         $stmt = $this->db->query("SELECT * FROM tags");
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
     }
 }
