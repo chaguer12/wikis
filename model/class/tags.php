@@ -3,7 +3,7 @@ class Tag{
     private $tag_id;
     private $tag_name;
 
-    public function __construct($tag_id,$tag_name){
+    public function __construct($tag_id = null,$tag_name = null){
         $this->tag_id;
         $this->tag_name;
         

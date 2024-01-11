@@ -1,4 +1,5 @@
 <?php
+include 'includes/session.php';
 include '../controller/user.contr.php';
 ?>
 <!DOCTYPE html>
@@ -12,6 +13,7 @@ include '../controller/user.contr.php';
     <title>Dashboard | Dashboard</title>
 </head>
 <body class="font-sans bg-gray-100">
+    
     <div id="MenuDashbord" class="bg-black text-white h-screen w-64 fixed top-0 left-0 rounded-r-2xl">
         <div class="p-4">
             <h1 class="text-2xl font-serif font-semibold"><i class="fas fa-chart-bar"></i> Dashboard</h1>
@@ -20,6 +22,7 @@ include '../controller/user.contr.php';
             <a href="dashboard.php" class="p-4 hover:bg-gray-700"><i class="fas fa-home"></i> Dashboard</a>
             <a href="catdash.php" class="p-4 hover:bg-gray-700"><i class="fas fa-th-large "></i> categories</a>
             <a href="tagdash.php" class="p-4 hover:bg-gray-700"><i class="fas fa-tags"></i>tags</a>
+            <a href="feed.php" class="p-4 hover:bg-gray-700"><i class="fa-sharp fa-solid fa-newspaper"></i>articles</a>
                        
             <a href="logout.php" class="p-4 hover:bg-gray-700"><i class="fas fa-sign-out-alt"></i> Logout</a>
         </nav>

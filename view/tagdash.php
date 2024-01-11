@@ -1,5 +1,6 @@
 <?php
 include '../controller/tag.contr.php';
+include 'includes/session.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">

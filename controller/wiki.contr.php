@@ -3,7 +3,7 @@ require_once('../model/WikiDAO.php');
 require_once('../model/UserDAO.php');
 
 
-if(isset($_POST['add'])){
+if(isset($_POST['add']) && $_SESSION['role'] = 'auteur'){
     $title = $_POST['title'];
     $content = $_POST['content'];
     $category = $_POST['category'];

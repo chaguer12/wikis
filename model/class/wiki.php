@@ -11,7 +11,7 @@ class Wiki {
     private Category $category;
     private $status;
 
-    public function __construct($wiki_id,$title,$content,$image,$date,User $user,Category $category,$status){
+    public function __construct($wiki_id = null,$title = null,$content = null,$image = null,$date = null,User $user = null,Category $category = null,$status = null){
         $this->wiki_id = $wiki_id;
         $this->title = $title;
         $this->content = $content;

@@ -13,7 +13,7 @@ session_start();
                       <li><a href="feed.php" class="text-blue-600 text-lg font-semibold hover:text-green-500">Feed</a></li>
 
                       <?php
-if (!isset($_SESSION['email'])) {
+if (!isset($_SESSION['email'] )) {
 
 
                       ?>

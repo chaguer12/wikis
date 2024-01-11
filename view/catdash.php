@@ -1,5 +1,6 @@
 <?php
 include '../controller/category.contr.php';
+include 'includes/session.php';
 ?>
 
 <!DOCTYPE html>

@@ -24,15 +24,24 @@ if(isset($_POST['login'])){
 }else{
     $login = $user->verifyUser($email,$pass);
     $role = $user->Get_user_role($email);
-    if($login == true){
-        session_start();
+    session_start();
+
+    if($login == true && $role == 'auteur'){
+        
         $_SESSION['email'] = $email;
         $_SESSION['role'] = $role;
         $_SESSION['user_logged_in'] = true;
         
         header("location:../view/feed.php");
-    }else{
-        header("location:../view/login");
+    }elseif($login == true && $role == 'admin'){
+        
+        $_SESSION['email'] = $email;
+        $_SESSION['role'] = $role;
+        $_SESSION['user_logged_in'] = true;
+        // var_dump($_SESSION['role']);
+        // die("here");
+        header("location:../view/dashboard.php");
+        
     }
 }
 
