@@ -1,132 +1,45 @@
-<?php
-session_start();
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="icon" type="image/png" sizes="32x32" href="/view/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
     <!-- <link rel="icon" type="image/png" sizes="16x16" href="/view/img/favicon-16x16.png"> -->
     <title>Wikimedia Home</title>
 </head>
 <body class="bg-blueGray-50">
-<header>
-          <nav class="flex justify-between">
-              <div class="">
-                  <img src="view/image/logo.png" class="w-32">
-              </div>
-
-              <div class="p-4">
-                  <ul class="flex gap-4 mt-4">
-                      <li><a href="" class="text-blue-600 text-lg font-semibold hover:text-green-500">Home</a></li>
-                      <li><a href="view/feed.php" class="text-blue-600 text-lg font-semibold hover:text-green-500">Feed</a></li>
-					  <li><a href="categories.php" class="text-blue-600 text-lg font-semibold hover:text-green-500">Categories</a></li>
-                      <?php
-if (!isset($_SESSION['email'])) {
-
-
-                      ?>
-                      <li><a href="view/login.php" class="text-blue-600 text-lg font-semibold hover:text-green-500 underline decoration-green-500">Log in</a></li>
-                      <li><a href="view/register.php" class="text-blue-600 text-lg font-semibold hover:text-green-500 underline decoration-green-500">Register</a></li>
-                      <?php
-                      }else{
-                        ?>
-                        <li><a href="" class="text-blue-600 text-lg font-semibold hover:text-green-500 underline decoration-green-500">add article</a></li>
-                        <li><a href="view/logout.php" class="text-blue-600 text-lg font-semibold hover:text-green-500 underline decoration-green-500">Log out</a></li>
-                        
-
-                        <?php
-                      }
-                      ?>
-                  </ul>
-              </div>
-    
-              
-          </nav>
-
-          
-</header>
+<?php include 'includes/nav.php'; ?>
  
     <section class="relative pt-16 bg-blueGray-50">
     <div class="container mx-auto text-center">
             <h1 class="text-4xl font-semibold mb-2 text-blue-600">Got an idea? Join Wikimedia</h1>
-            <p class="text-lg text-gray-400 mb-8">Shortcut to your knowledge</p>
+            <p class="text-lg text-gray-400 mb-8">Our top categories</p>
         </div>
 <div class="container mx-auto">
-  <div class="flex flex-wrap items-center">
-    <div class="w-10/12  md:w-6/12 lg:w-4/12 px-12 md:px-4 mr-auto ml-auto mt-78">
-      <div class="relative p-4 flex flex-col min-w-0 break-words h-full bg-white w-full mb-6 shadow-lg rounded-lg bg-pink-500">
-          <img alt="..." src="view/image/picSC.jpg" class="w-full align-middle rounded-t-lg">
-         
-          <h4 class="text-xl font-bold text-black">
-            Great for your curiosity
-          </h4>
-          <p class="text-md font-light mt-2 text-black">
-          Great for your curiosity, a statement that encapsulates the essence of exploring and discovering new things through reading.
-          </p>
-        </blockquote>
-      </div>
-    </div>
+  
+<div class="grid grid-cols-2 gap-16">
+<?php
+include_once '../controller/category.contr.php';
+foreach($fourcategories as $cat){?>
+    <a href="#" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+        <img class="object-cover w-full rounded-t-lg h-48 md:h-96 md:w-48 md:rounded-none md:rounded-s-lg" src="data:image/jpg;charset=utf8;base64,<?=  base64_encode($cat['image']); ?>" alt="">
+        <div class="flex flex-col justify-between p-4 leading-normal">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><?php echo $cat['cat_name']; ?></h5>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+        </div>
+    </a>
+<?php
+}
+?>
 
-    <div class="w-full md:w-6/12 px-4">
-      <div class="flex flex-wrap">
-        <div class="w-full md:w-6/12 px-4">
-          <div class="relative flex flex-col mt-4">
-            <div class="px-4 py-5 flex-auto">
-              <div class="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-white">
-                <i class="fas fa-sitemap"></i>
-              </div>
-              <h6 class="text-xl mb-1 font-semibold">Network</h6>
-              <p class="mb-4 text-blueGray-500">
-              Networking with people is a vital skill in both professional and personal spheres. 
-              </p>
-            </div>
-          </div>
-          <div class="relative flex flex-col min-w-0">
-            <div class="px-4 py-5 flex-auto">
-              <div class="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-white">
-                <i class="fas fa-drafting-compass"></i>
-              </div>
-              <h6 class="text-xl mb-1 font-semibold">
-                Practical
-              </h6>
-              <p class="mb-4 text-blueGray-500">
-              Practicality is a cornerstone in many aspects of life and work, emphasizing the application of knowledge, skills, and processes.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="w-full md:w-6/12 px-4">
-          <div class="relative flex flex-col min-w-0 mt-4">
-            <div class="px-4 py-5 flex-auto">
-              <div class="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-white">
-                <i class="fas fa-newspaper"></i>
-              </div>
-              <h6 class="text-xl mb-1 font-semibold">Articles</h6>
-              <p class="mb-4 text-blueGray-500">
-              Articles play a crucial role in disseminating information, sharing insights, and shaping public opinion. 
-              </p>
-            </div>
-          </div>
-          <div class="relative flex flex-col min-w-0">
-            <div class="px-4 py-5 flex-auto">
-              <div class="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-white">
-                <i class="fas fa-file-alt"></i>
-              </div>
-              <h6 class="text-xl mb-1 font-semibold">Documentation</h6>
-              <p class="mb-4 text-blueGray-500">
-              Documentation is a critical component of any process, system, or project
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+
+
+</div>
+
 </div>
 
 </section>
@@ -134,7 +47,7 @@ if (!isset($_SESSION['email'])) {
 <section class="flex flex-row flex-wrap mx-auto">
 <div class="container mx-auto text-center p-8">
             <h1 class="text-4xl font-semibold mb-2 text-blue-600">Explore our varity of articles</h1>
-            <p class="text-lg text-gray-400 mb-8">wekimedia number one leader</p>
+            <p class="text-lg text-gray-400 mb-8">Hotest articles</p>
         </div>
   <!-- Single Card Component -->
   <div
@@ -426,10 +339,79 @@ if (!isset($_SESSION['email'])) {
     </ul>
   </div>
 </footer>
+<div id="modal" class="flex justify-center fixed z-10 inset-0 overflow-y-auto hidden">
+  <div class="flex items-center justify-center min-h-screen">
+    <div class="relative bg-white w-96 p-6 rounded shadow-lg">
+      <!-- Modal Close Button -->
+      <button
+        id="closeModal"
+        class="absolute top-0 right-0 mt-4 mr-4 text-gray-500 hover:text-gray-700 cursor-pointer"
+        onclick="closeModal()"
+      >
+        &times;
+      </button>
+
+      <!-- Modal Content - Form -->
+      <form class="space-y-4" enctype="multipart/form-data" method="post" action="../controller/wiki.contr.php">
+        <!-- Form Fields -->
+        <div class="mb-4">
+          <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
+          <input
+            type="text"
+            id="title"
+            name="title"
+            class="mt-1 p-2 w-full border rounded-md"
+            placeholder="Enter the title"
+          />
+        </div>
+
+        <div class="mb-4">
+          <label for="content" class="block text-sm font-medium text-gray-700">Content</label>
+          <textarea
+            id="content"
+            name="content"
+            class="mt-1 p-2 w-full border rounded-md"
+            placeholder="Enter the content"
+          ></textarea>
+        </div>
+        <div class="mb-4">
+          <label for="content" class="block text-sm font-medium text-gray-700">Category</label>
+          <select class="w-full" name="category" id="">
+          <?php foreach($categories as $categorie){ ?>
+            <option value="<?php echo $categorie['cat_id']; ?>"><?php echo $categorie['cat_name']; ?></option>
+            <?php } ?>
+            
+        </select>
+        </div>
+
+        <!-- Image Input Field -->
+        <div class="mb-4">
+          <label for="image" class="block text-sm font-medium text-gray-700">Image</label>
+          <input
+            type="file"
+            id="image"
+            name="image"
+            accept="image/*"
+            class="mt-1 p-2 w-full border rounded-md"
+          />
+        </div>
+
+        <!-- Submit Button -->
+        <button
+          type="submit"
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          name="add"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
 
 
     
 
-    
+<script src="javascript/main.js"></script> 
 </body>
 </html>

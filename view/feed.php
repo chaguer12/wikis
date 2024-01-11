@@ -36,14 +36,15 @@ include '../controller/wiki.contr.php';
         
     </section>
     <section class="flex flex-row flex-wrap mx-auto">
-      <?php
-          //foreach($wiki as $article){
-      ?>
+     
 <div class="container mx-auto text-center p-8">
             <h1 class="text-4xl font-semibold mb-2 text-blue-600">Explore latest articles</h1>
             <p class="text-lg text-gray-400 mb-8">we are bringing you the latest articles</p>
         </div>
   <!-- Single Card Component -->
+  <?php
+          //foreach($wiki as $article){
+      ?>
   <div
     class="transition-all duration-150 flex w-full px-4 py-6 md:w-1/2 lg:w-1/3"
   >

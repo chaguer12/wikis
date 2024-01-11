@@ -29,4 +29,17 @@ class TagDAO{
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
+    public function update_tag($tag_id,$tag_name){
+        $stmt = $this->db->prepare("UPDATE tags SET tag_name = :tag_name WHERE tag_id = :tag_id");
+        $stmt->bindParam(":tag_id",$tag_id);
+        $stmt->bindParam(":tag_name",$tag_name);
+        $stmt->execute();
+
+    }
+    public function Delete_tag($tag_id){
+        $stmt = $this->db->prepare("DELETE FROM tags WHERE tag_id = :tag_id");
+        $stmt->bindParam(":tag_id",$tag_id);
+        $stmt->execute();
+
+    }
 }
