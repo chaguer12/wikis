@@ -11,12 +11,5 @@
 <body class="bg-blueGray-50">
 <?php include 'includes/nav.php'; ?>
     
-
-
-<section class=" ">
-	
-		
-	
-</section>
 </body>
 </html>

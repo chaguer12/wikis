@@ -28,12 +28,12 @@ include 'includes/session.php';
         <div class="text-center">
             <h1 class="pt-8 text-4xl font-semibold mb-2 text-blue-600">Tags</h1>
         </div>
-        <form action="../controller/tag.contr.php" method="post" class="p-8" enctype="multipart/form-data">
-            <label for="tagName" class="block mb-2 text-sm font-medium text-gray-600">New Tag Name:</label>
-            <input type="text" name="tagName" class="w-full px-4 py-2 border rounded-md">
-            <button type="submit" name="add" class="mt-4 inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                Add tag
-            </button>
+        <form action="../controller/tag.contr.php" method="post" class="p-8" enctype="multipart/form-data" onsubmit="return validateForm()">
+                <label for="tagName" class="block mb-2 text-sm font-medium text-gray-600">New Tag Name:</label>
+                <input type="text" id="tagName" name="tagName" class="w-full px-4 py-2 border rounded-md">
+                <button type="submit" name="add" class="mt-4 inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    Add tag
+                </button>
         </form>
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-8">
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -69,7 +69,7 @@ include 'includes/session.php';
             </table>
         </div>
     </section>
-
+    <script src="javascript/regex.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
         function startEdit(tagId) {

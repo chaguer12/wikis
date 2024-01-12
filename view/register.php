@@ -163,42 +163,7 @@
   </div>
 </footer>
 <script src="javascript/regex.js"></script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('myForm').addEventListener('submit', function(event) {
-        var firstname = document.getElementById('firstname').value;
-        var lastname = document.getElementById('lastname').value;
-        var email = document.getElementById('email').value;
-        var password = document.getElementById('password').value;
 
-        // Regex patterns
-        var patternEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        var patternName = /^[a-zA-Z\s'.-]+$/;
-        var patternPassword = /^.{4,}$/;
-
-        // Validation
-        if (!patternName.test(firstname)) {
-            alert('Please enter a valid first name');
-            event.preventDefault(); // Prevent form submission if validation fails
-        }
-
-        if (!patternName.test(lastname)) {
-            alert('Please enter a valid last name');
-            event.preventDefault(); // Prevent form submission if validation fails
-        }
-
-        if (!patternEmail.test(email)) {
-            alert('Please enter a valid email address');
-            event.preventDefault(); // Prevent form submission if validation fails
-        }
-
-        if (!patternPassword.test(password)) {
-            alert('Password must be at least 4 characters long');
-            event.preventDefault(); // Prevent form submission if validation fails
-        }
-    });
-});
-</script>
 
 </body>
 </html>
