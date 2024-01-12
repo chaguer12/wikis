@@ -18,11 +18,13 @@ if(isset($_POST['add']) && $_SESSION['role'] = 'auteur'){
     $user = new UserDAO();
     $userid = $user->Get_user_id($userEmail);
     $wiki = new WikiDAO();
-    $tagOBJ = new TagDAO();
+    $tagOBJ = new wiki_tagDAO();
     if (isset($_SESSION['email'])){
         $article = $wiki->insertWiki($title,$content,$image,$userid,$category);
+        $wiki_id = $wiki->getID($title);
+    
         foreach($tags as $tag){
-            
+            $tagOBJ->insertTags($wiki_id,$tag);
         }
         header("location: ../view/feed.php");
 

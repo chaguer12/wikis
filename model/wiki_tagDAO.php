@@ -9,6 +9,14 @@ class wiki_tagDAO{
         $this->db = Database::getInstance();
         
     }
+    public function insertTags($wiki_id,$tag_id){
+        foreach($tag_id as $tag){
+            $stmt = $this->db->prepare("INSERT INTO wiki_tags (wiki_id,tag_id) VALUES (:wiki_id,:tag_id)");
+            $stmt->bindParam(":wiki_id",$wiki_id);
+            $stmt->bindParam(":tag_id",$tag);
+            $stmt->execute();
+        }
+    }
 
     
 }

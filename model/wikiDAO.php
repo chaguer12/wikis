@@ -17,6 +17,7 @@ class WikiDAO{
         $stmt->bindParam(":userid",$user_id);
         $stmt->bindParam(":catid",$cat_id);
         $stmt->execute();
+        
 
     }
     public function CountWikis(){
@@ -37,7 +38,15 @@ class WikiDAO{
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
-    public function getArchWikis(){
+    public function getID($title){
+        $stmt = $this->db->prepare("SELECT * FROM wikis WHERE titre = :title");
+        $stmt->bindParam(":title",$title);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result;
+
+    }
+    public function ArchiveWikis(){
         $stmt = $this->db->query("SELECT * FROM wikis WHERE status = 1");
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);

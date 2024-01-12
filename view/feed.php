@@ -258,7 +258,7 @@ include '../controller/tag.contr.php';
           <?php foreach ($tags as $tag) {
             ?>
           <div class="p-2">
-            <input type="checkbox" class="h-4 " name="tags[]">
+            <input value="<?php echo $tag['tag_id'] ?>" type="checkbox" class="h-4 " name="tags[]">
           <p  class=""><?php echo $tag['tag_name']; ?></p>
           </div>
           <?php
