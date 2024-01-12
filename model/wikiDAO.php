@@ -37,6 +37,13 @@ class WikiDAO{
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result; 
     }
+    public function Get_wiki($wiki_id){
+        $stmt = $this->db->prepare("SELECT * FROM wikis WHERE wiki_id = :wiki_id");
+        $stmt->bindParam(":wiki_id",$wiki_id);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
     public function getWikis(){
         $stmt = $this->db->query("SELECT * FROM wikis join categories where wikis.cat_id = categories.cat_id and wikis.status = 0 ORDER by wiki_date DESC;");
         $stmt->execute();

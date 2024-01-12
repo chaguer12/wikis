@@ -37,6 +37,14 @@ class UserDAO{
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result['user_id'];
     }
+    public function Get_user($user_id){
+        $stmt = $this->db->prepare("SELECT * FROM users WHERE user_id = :user_id");
+        $stmt->bindParam(":user_id",$user_id);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
+    
     public function Get_user_role($email){
         $stmt = $this->db->prepare("SELECT * FROM users WHERE email = :email");
         $stmt->bindParam(":email",$email);

@@ -47,8 +47,10 @@ $user =  new UserDAO();
         }else{
             $login =$user->Signup($prenom,$nom,$email,$password);
             if($login == true){
+                header("location:../view/index.php");
 
             }else{
+                
                 
             }
         }

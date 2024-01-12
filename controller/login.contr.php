@@ -24,6 +24,7 @@ if(isset($_POST['login'])){
 }else{
     $login = $user->verifyUser($email,$pass);
     $role = $user->Get_user_role($email);
+    $user_id = $user->Get_user_id($email);
     session_start();
 
     if($login == true && $role == 'auteur'){
@@ -31,6 +32,7 @@ if(isset($_POST['login'])){
         $_SESSION['email'] = $email;
         $_SESSION['role'] = $role;
         $_SESSION['user_logged_in'] = true;
+        $_SESSION['user_id'] = $user_id; 
         
         header("location:../view/feed.php");
     }elseif($login == true && $role == 'admin'){
@@ -38,11 +40,15 @@ if(isset($_POST['login'])){
         $_SESSION['email'] = $email;
         $_SESSION['role'] = $role;
         $_SESSION['user_logged_in'] = true;
+        $_SESSION['user_id'] = $user_id;
         // var_dump($_SESSION['role']);
         // die("here");
         header("location:../view/dashboard.php");
         
-    }
+    }else{
+        header("location:../view/login.php");
+}
+
 }
 
 

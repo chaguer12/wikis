@@ -85,23 +85,10 @@
         <section class="px-4 py-2 mt-2">
           <div class="flex items-center justify-between">
             <div class="flex justify-between flex-1">
-              <?php
-                if(isset($_SESSION) && $_SESSION['role'] = 'admin'){
-              ?>
+             
               
-              <form action="">
-                <input type="text" name="id_wiki" hidden value="<?php echo $article['wiki_id'] ?>">
-              <button type="submit" class="bg-red-600 text-white rounded-lg py-1.5 px-2">delete</button>
-              </form>
-              <form action="" method="post" enctype="multipart/form-data">
-                <input type="text" name="wiki_id" hidden value="<?php echo $article['wiki_id'] ?>">
-                <a href="editwiki.php?wiki_id=<?php echo $article['wiki_id'] ?>"   class="bg-green-500 text-white rounded-lg py-1.5 px-2">edit</a>
-            </form>
-            <?php
-            }else{
-              echo "";
-            }
-            ?>
+                  <?php include 'includes/edit.php'; ?>
+            
            
             </div>
             
