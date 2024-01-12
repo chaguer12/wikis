@@ -1,4 +1,6 @@
-
+<?php
+include '../controller/tag.contr.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -228,75 +230,89 @@ foreach($fourcategories as $cat){?>
     </ul>
   </div>
 </footer>
-<div id="modal" class="flex justify-center fixed z-10 inset-0 overflow-y-auto hidden">
-  <div class="flex items-center justify-center min-h-screen">
-    <div class="relative bg-white w-96 p-6 rounded shadow-lg">
-      <!-- Modal Close Button -->
-      <button
-        id="closeModal"
-        class="absolute top-0 right-0 mt-4 mr-4 text-gray-500 hover:text-gray-700 cursor-pointer"
-        onclick="closeModal()"
-      >
-        &times;
-      </button>
-
-      <!-- Modal Content - Form -->
-      <form class="space-y-4" enctype="multipart/form-data" method="post" action="../controller/wiki.contr.php">
-        <!-- Form Fields -->
-        <div class="mb-4">
-          <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
-          <input
-            type="text"
-            id="title"
-            name="title"
-            class="mt-1 p-2 w-full border rounded-md"
-            placeholder="Enter the title"
-          />
-        </div>
-
-        <div class="mb-4">
-          <label for="content" class="block text-sm font-medium text-gray-700">Content</label>
-          <textarea
-            id="content"
-            name="content"
-            class="mt-1 p-2 w-full border rounded-md"
-            placeholder="Enter the content"
-          ></textarea>
-        </div>
-        <div class="mb-4">
-          <label for="content" class="block text-sm font-medium text-gray-700">Category</label>
-          <select class="w-full" name="category" id="">
-          <?php foreach($categories as $categorie){ ?>
-            <option value="<?php echo $categorie['cat_id']; ?>"><?php echo $categorie['cat_name']; ?></option>
-            <?php } ?>
-            
-        </select>
-        </div>
-
-        <!-- Image Input Field -->
-        <div class="mb-4">
-          <label for="image" class="block text-sm font-medium text-gray-700">Image</label>
-          <input
-            type="file"
-            id="image"
-            name="image"
-            accept="image/*"
-            class="mt-1 p-2 w-full border rounded-md"
-          />
-        </div>
-
-        <!-- Submit Button -->
+<div id="modal" class="flex justify-center  fixed z-10 inset-0 overflow-y-auto hidden">
+    <div class="flex items-center justify-center min-h-screen">
+      <div class="relative bg-white w-3/4 p-6 rounded shadow-lg">
+        <!-- Modal Close Button -->
         <button
-          type="submit"
-          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          name="add"
+          id="closeModal"
+          class="absolute top-0 right-0 mt-4 mr-4 text-gray-500 hover:text-gray-700 cursor-pointer"
+          onclick="closeModal()"
         >
-          Submit
+          &times;
         </button>
-      </form>
+
+        <!-- Modal Content - Form -->
+        <form class="space-y-4" enctype="multipart/form-data" method="post" action="../controller/wiki.contr.php">
+          <!-- Form Fields -->
+          <div class="mb-4">
+            <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              class="mt-1 p-2 w-full border rounded-md"
+              placeholder="Enter the title"
+            />
+          </div>
+
+          <div class="mb-4">
+            <label for="content" class="block text-sm font-medium text-gray-700">Content</label>
+            <textarea
+              id="content"
+              name="content"
+              class="mt-1 p-2 w-full border rounded-md"
+              placeholder="Enter the content"
+            ></textarea>
+          </div>
+          <div class="mb-4">
+            <label for="content" class="block text-sm font-medium text-gray-700">Category</label>
+            <select class="w-full" name="category" id="">
+            <?php foreach($categories as $categorie){ ?>
+              <option value="<?php echo $categorie['cat_id']; ?>"><?php echo $categorie['cat_name']; ?></option>
+              <?php } ?>
+              
+          </select>
+          </div>
+          <div class="mb-4">
+            <label for="content" class="block text-sm font-medium text-gray-700">Tags</label>
+            <div class="grid grid-cols-4 gap-2 bg-blue-100 text-blue-800 text-xs rounded ">
+            <?php foreach ($tags as $tag) {
+              ?>
+            <div class="p-2">
+              <input value="<?php echo $tag['tag_id'] ?>" type="checkbox" class="h-4 " name="tags[]">
+            <p  class=""><?php echo $tag['tag_name']; ?></p>
+            </div>
+            <?php
+            }
+            ?>
+            </div>
+          </div>
+
+          <!-- Image Input Field -->
+          <div class="mb-4">
+            <label for="image" class="block text-sm font-medium text-gray-700">Image</label>
+            <input
+              type="file"
+              id="image"
+              name="image"
+              accept="image/*"
+              class="mt-1 p-2 w-full border rounded-md"
+            />
+          </div>
+
+          <!-- Submit Button -->
+          <button
+            type="submit"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            name="add"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
     </div>
   </div>
-</div>
 
 
     

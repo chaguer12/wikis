@@ -10,13 +10,19 @@ class wiki_tagDAO{
         
     }
     public function insertTags($wiki_id,$tag_id){
-        foreach($tag_id as $tag){
+       
             $stmt = $this->db->prepare("INSERT INTO wiki_tags (wiki_id,tag_id) VALUES (:wiki_id,:tag_id)");
             $stmt->bindParam(":wiki_id",$wiki_id);
-            $stmt->bindParam(":tag_id",$tag);
+            $stmt->bindParam(":tag_id",$tag_id);
             $stmt->execute();
-        }
+      
     }
+    public function DeleteTags($wiki_id){
+        $stmt = $this->db->prepare("DELETE FROM wiki_tags WHERE wiki_id = :wiki_id");
+        $stmt->bindParam(":wiki_id",$wiki_id);
+        $stmt->execute();
+    }
+    
 
     
 }

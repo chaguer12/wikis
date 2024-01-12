@@ -20,6 +20,17 @@ class WikiDAO{
         
 
     }
+    public function updateWiki($title,$content,$image,$user_id,$cat_id,$wiki_id){
+        $stmt = $this->db->prepare("UPDATE wikis SET titre = :titre,contenu = :contenu,image = :image,user_id = :userid,cat_id = catid WHERE wiki_id = :wiki_id");
+        $stmt->bindParam(":titre",$title);
+        $stmt->bindParam(":contenu",$content);
+        $stmt->bindParam(":image",$image);
+        $stmt->bindParam(":userid",$user_id);
+        $stmt->bindParam(":catid",$cat_id);
+        $stmt->bindParam(":wiki_id",$wiki_id);
+        $stmt->execute();
+
+    }
     public function CountWikis(){
         $stmt = $this->db->query("SELECT count(wiki_id) as count FROM `wikis`;");
         $stmt->execute();
@@ -43,7 +54,7 @@ class WikiDAO{
         $stmt->bindParam(":title",$title);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $result;
+        return $result['wiki_id'];
 
     }
     public function ArchiveWikis(){
@@ -51,6 +62,15 @@ class WikiDAO{
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
+    }
+    public function getWiki($wiki_id){
+        $stmt = $this->db->prepare("SELECT * FROM wikis WHERE status = 0 AND wiki_id = :wiki_id");
+        $stmt->bindParam(":wiki_id",$wiki_id);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+        
+
     }
    
 }
