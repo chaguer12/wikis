@@ -1,4 +1,6 @@
 <?php
+require_once('wiki.php');
+require_once('tags.php');
 class Wiki_tag{
     private Wiki $wiki;
     private Tag $tag;

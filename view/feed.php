@@ -1,6 +1,7 @@
 <?php
 include '../controller/category.contr.php';
 include '../controller/wiki.contr.php';
+include '../controller/tag.contr.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,7 +44,9 @@ include '../controller/wiki.contr.php';
         </div>
   <!-- Single Card Component -->
   <?php
-          //foreach($wiki as $article){
+          $wikiOBJ = new WikiDAO();
+          $result = $wikiOBJ->getWikis();
+          foreach($result as $article){
       ?>
   <div
     class="transition-all duration-150 flex w-full px-4 py-6 md:w-1/2 lg:w-1/3"
@@ -53,14 +56,14 @@ include '../controller/wiki.contr.php';
     >
       <div class="md:flex-shrink-0">
         <img
-          src="https://www.unfe.org/wp-content/uploads/2019/04/SM-placeholder-1024x512.png"
+        src="data:image/jpg;charset=utf8;base64,<?= base64_encode($article['image']); ?>"
           alt="Blog Cover"
           class="object-fill w-full rounded-lg rounded-b-none md:h-56"
         />
       </div>
       <div class="flex items-center justify-between px-4 py-2 overflow-hidden">
         <span class="text-xs font-medium text-blue-600 uppercase">
-          Web Programming
+        <?php echo $article['cat_name']; ?>
         </span>
         
       </div>
@@ -68,7 +71,7 @@ include '../controller/wiki.contr.php';
       <div class="flex flex-wrap items-center flex-1 px-4 py-1 text-center mx-auto">
         <a href="#" class="hover:underline">
           <h2 class="text-2xl font-bold tracking-normal text-gray-800">
-            How to Yawn in 7 Days
+          <?php echo $article['titre']; ?>
           </h2>
         </a>
       </div>
@@ -76,26 +79,18 @@ include '../controller/wiki.contr.php';
       <p
         class="flex flex-row flex-wrap w-full px-4 py-2 overflow-hidden text-sm text-justify text-gray-700"
       >
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, magni
-        fugiat, odit incidunt necessitatibus aut nesciunt exercitationem aliquam
-        id voluptatibus quisquam maiores officia sit amet accusantium aliquid
-        quo obcaecati quasi.
+      <?php echo $article['contenu']; ?>
       </p>
       <hr class="border-gray-300" />
       <section class="px-4 py-2 mt-2">
         <div class="flex items-center justify-between">
-          <div class="flex items-center flex-1">
-            <img
-              class="object-cover h-10 rounded-full"
-              src="https://thumbs.dreamstime.com/b/default-avatar-photo-placeholder-profile-icon-eps-file-easy-to-edit-default-avatar-photo-placeholder-profile-icon-124557887.jpg"
-              alt="Avatar"
-            />
-            <div class="flex flex-col mx-2">
-              <a href="" class="font-semibold text-gray-700 hover:underline">
-                Fajrian Aidil Pratama
-              </a>
-              <span class="mx-1 text-xs text-gray-600">28 Sep 2020</span>
-            </div>
+          <div class="flex justify-between flex-1">
+            
+            <form action="">
+              <input type="text" hidden value="<?php echo $article['wiki_id'] ?>">
+            <button type="submit" class="bg-red-600 text-white rounded-lg py-1.5 px-2">delete</button>
+            </form>
+            <button class="bg-green-500 text-white rounded-lg py-1.5 px-2">edit</button>
           </div>
           
         </div>
@@ -106,7 +101,7 @@ include '../controller/wiki.contr.php';
   
   </div>
   <?php
- // }
+ }
   ?>
 </section>
 <footer>
@@ -213,9 +208,9 @@ include '../controller/wiki.contr.php';
     </ul>
   </div>
 </footer>
-<div id="modal" class="flex justify-center fixed z-10 inset-0 overflow-y-auto hidden">
+<div id="modal" class="flex justify-center  fixed z-10 inset-0 overflow-y-auto hidden">
   <div class="flex items-center justify-center min-h-screen">
-    <div class="relative bg-white w-96 p-6 rounded shadow-lg">
+    <div class="relative bg-white w-3/4 p-6 rounded shadow-lg">
       <!-- Modal Close Button -->
       <button
         id="closeModal"
@@ -256,6 +251,20 @@ include '../controller/wiki.contr.php';
             <?php } ?>
             
         </select>
+        </div>
+        <div class="mb-4">
+          <label for="content" class="block text-sm font-medium text-gray-700">Tags</label>
+          <div class="grid grid-cols-4 gap-2 bg-blue-100 text-blue-800 text-xs rounded ">
+          <?php foreach ($tags as $tag) {
+            ?>
+          <div class="p-2">
+            <input type="checkbox" class="h-4 " name="tags[]">
+          <p  class=""><?php echo $tag['tag_name']; ?></p>
+          </div>
+          <?php
+          }
+          ?>
+          </div>
         </div>
 
         <!-- Image Input Field -->

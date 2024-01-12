@@ -25,5 +25,23 @@ class WikiDAO{
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result; 
     }
+    public function getWikis(){
+        $stmt = $this->db->query("SELECT * FROM wikis join categories where wikis.cat_id = categories.cat_id and wikis.status = 0 ORDER by wiki_date DESC;");
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+    public function get3Wikis(){
+        $stmt = $this->db->query("SELECT * FROM wikis join categories where wikis.cat_id = categories.cat_id and wikis.status = 0 ORDER by wiki_date DESC LIMIT 3;");
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+    public function getArchWikis(){
+        $stmt = $this->db->query("SELECT * FROM wikis WHERE status = 1");
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
    
 }
