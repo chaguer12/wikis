@@ -69,5 +69,19 @@ if(isset($_POST['edit'])){
     
             
         }
+
+if(isset($_POST['delete'])){
+    die(var_dump($_POST));
+    $wiki_id = $_POST['id_wiki'];
+    $wiki = new WikiDAO();
+    $wiki->Delet_wiki($wiki_id);
+    header("location: ../view/feed.php");
+}
+if(isset($_POST['archive'])){
+    $wiki_id = $_POST['wiki'];
+    $wiki = new WikiDAO;
+    $wiki->ArchiveWikis($wiki_id);
+    header("location: ../view/feed.php");
+}
         
 

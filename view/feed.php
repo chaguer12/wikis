@@ -88,7 +88,7 @@
              
               
                   <?php include 'includes/edit.php'; ?>
-            
+                  <?php include 'includes/archive.php'; ?>
            
             </div>
             

@@ -21,6 +21,18 @@ if ($user !== 0) {
      
 } 
 }
+if (!isset($_SESSION['role'])) {
+    $role = 0;
+} else {
+    $role = isset($userOBJ) ? $userOBJ->Get_user_role($_SESSION['email']) : 0;
+}
+
+if ($user !== 0) {
+    if ($role === 'admin') {
+        $role = $userOBJ->Get_user_role($_SESSION['email']);
+     
+} 
+}
 
 $countwikis = $wikiOBJ->CountWikis();
 $categoryOBJ = new CategoryDAO();
