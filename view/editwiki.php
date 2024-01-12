@@ -79,10 +79,12 @@ include 'includes/nav.php';
 
           <!-- Submit Button -->
           <button
+            
             type="submit"
             class="flex justify-center w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded "
             name="edit"
           >
+          <input type="hidden" name="wiki_id" value="<?php echo $_GET['wiki_id']; ?>">
             Submit
           </button>
         </form>
