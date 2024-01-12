@@ -1,5 +1,6 @@
 <?php
 include '../controller/tag.contr.php';
+include '../controller/wiki.contr.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,77 +49,69 @@ foreach($fourcategories as $cat){?>
 
 <section class="flex flex-row flex-wrap mx-auto">
 <div class="container mx-auto text-center p-8">
-            <h1 class="text-4xl font-semibold mb-2 text-blue-600">Explore our varity of articles</h1>
-            <p class="text-lg text-gray-400 mb-8">Hotest articles</p>
-        </div>
-  <!-- Single Card Component -->
-  <?php
-  
-  include '../controller/wiki.contr.php';
-  $wikiOBJ = new WikiDAO();
-  $result = $wikiOBJ->get3Wikis();
-  foreach($result as $art){
-  ?>
-  <div
-    class="transition-all duration-150 flex w-full px-4 py-6 md:w-1/2 lg:w-1/3"
-  >
-    <div
-      class="flex flex-col items-stretch min-h-full pb-4 mb-6 transition-all duration-150 bg-white rounded-lg shadow-lg hover:shadow-2xl"
-    >
-      <div class="md:flex-shrink-0">
-        <img
-        src="data:image/jpg;charset=utf8;base64,<?= base64_encode($art['image']); ?>"
-          alt="Blog Cover"
-          class="object-fill w-full rounded-lg rounded-b-none md:h-56"
-        />
-      </div>
-      <div class="flex items-center justify-between px-4 py-2 overflow-hidden">
-        <span class="text-xs font-medium text-blue-600 uppercase">
-          <?php echo $art['cat_name']; ?>
-        </span>
-        <div class="flex flex-row items-center">
-          <!-- Icons and Text Here -->
-          <!-- ... -->
-        </div>
-      </div>
-      <hr class="border-gray-300" />
-      <div class="flex flex-wrap items-center flex-1 px-4 py-1 text-center mx-auto">
-        <a href="#" class="hover:underline">
-          <h2 class="text-2xl font-bold tracking-normal text-gray-800">
-            <?php echo $art['titre']; ?>
-          </h2>
-        </a>
-      </div>
-      <hr class="border-gray-300" />
-      <p
-        class="flex flex-row flex-wrap w-full px-4 py-2 overflow-hidden text-sm text-justify text-gray-700"
-      >
-      <?php echo $art['contenu']; ?>
-      </p>
-      <hr class="border-gray-300" />
-      <section class="px-4 py-2 mt-2">
-        <div class="flex items-center justify-between">
-          <div class="flex items-center flex-1">
-            <img
-              class="object-cover h-10 rounded-full"
-              src="https://thumbs.dreamstime.com/b/default-avatar-photo-placeholder-profile-icon-eps-file-easy-to-edit-default-avatar-photo-placeholder-profile-icon-124557887.jpg"
-              alt="Avatar"
-            />
-            <div class="flex flex-col mx-2">
-              <a href="" class="font-semibold text-gray-700 hover:underline">
-                Fajrian Aidil Pratama
-              </a>
-              <span class="mx-1 text-xs text-gray-600">28 Sep 2020</span>
-            </div>
+              <h1 class="text-4xl font-semibold mb-2 text-blue-600">Explore latest articles</h1>
+              <p class="text-lg text-gray-400 mb-8">we are bringing you the latest articles</p>
           </div>
+    <!-- Single Card Component -->
+    <?php
+            $wikiOBJ = new WikiDAO();
+            $result = $wikiOBJ->get3Wikis();
+            foreach($result as $article){
+        ?>
+    <div
+      class="transition-all duration-150 flex w-full px-4 py-6 md:w-1/2 lg:w-1/3"
+    >
+      <div
+        class="flex flex-col items-stretch w-96 min-h-full pb-4 mb-6 transition-all duration-150 bg-white rounded-lg shadow-lg hover:shadow-2xl"
+      >
+        <div class="md:flex-shrink-0">
+          <img
+          src="data:image/jpg;charset=utf8;base64,<?= base64_encode($article['image']); ?>"
+            alt="Blog Cover"
+            class="object-fill w-full rounded-lg rounded-b-none md:h-56"
+          />
+        </div>
+        <div class="flex items-center justify-between px-4 py-2 overflow-hidden">
+          <span class="text-xs font-medium text-blue-600 uppercase">
+          <?php echo $article['cat_name']; ?>
+          </span>
           
         </div>
-      </section>
+        <hr class="border-gray-300" />
+        <div class="flex flex-wrap items-center flex-1 px-4 py-1 text-center mx-auto">
+          <a href="#" class="hover:underline">
+            <h2 class="text-2xl font-bold tracking-normal text-gray-800">
+            <?php echo $article['titre']; ?>
+            </h2>
+          </a>
+        </div>
+        <hr class="border-gray-300" />
+        <p
+          class="flex flex-row flex-wrap w-full px-4 py-2 overflow-hidden text-sm text-justify text-gray-700"
+        >
+        <?php echo $article['contenu']; ?>
+        </p>
+        <hr class="border-gray-300" />
+        <section class="px-4 py-2 mt-2">
+          <div class="flex items-center justify-between">
+            <div class="flex justify-between flex-1">
+             
+              
+                  <?php include 'includes/edit.php'; ?>
+                  <?php include 'includes/archive.php'; ?>
+           
+            </div>
+            
+          </div>
+        </section>
+      </div>
     </div>
-  </div>
-  <?php
-  }
-  ?>
+    
+    
+    </div>
+    <?php
+            }
+          ?>
   
   
 </section>

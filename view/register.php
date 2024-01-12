@@ -18,7 +18,12 @@
               <h1 class="text-xl text-center     font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                   Create and account
               </h1>
-              <form class="space-y-4 md:space-y-6" action="../controller/signup.contr.php" method="POST" enctype="multipart/form-data">
+              <form id="myForm" class="space-y-4 md:space-y-6" action="../controller/signup.contr.php" method="POST" enctype="multipart/form-data">
+              <?php
+                    if (isset($errorMessage)) {
+                        echo '<div class="text-red-500 mt-4">' . $errorMessage . '</div>';
+                    }
+              ?>
                   <div>
                       <label for="firstname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your firstname</label>
                       <input type="text" name="firstname" id="firstname" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="First name" required="">
@@ -157,6 +162,43 @@
     </ul>
   </div>
 </footer>
+<script src="javascript/regex.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('myForm').addEventListener('submit', function(event) {
+        var firstname = document.getElementById('firstname').value;
+        var lastname = document.getElementById('lastname').value;
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('password').value;
+
+        // Regex patterns
+        var patternEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        var patternName = /^[a-zA-Z\s'.-]+$/;
+        var patternPassword = /^.{4,}$/;
+
+        // Validation
+        if (!patternName.test(firstname)) {
+            alert('Please enter a valid first name');
+            event.preventDefault(); // Prevent form submission if validation fails
+        }
+
+        if (!patternName.test(lastname)) {
+            alert('Please enter a valid last name');
+            event.preventDefault(); // Prevent form submission if validation fails
+        }
+
+        if (!patternEmail.test(email)) {
+            alert('Please enter a valid email address');
+            event.preventDefault(); // Prevent form submission if validation fails
+        }
+
+        if (!patternPassword.test(password)) {
+            alert('Password must be at least 4 characters long');
+            event.preventDefault(); // Prevent form submission if validation fails
+        }
+    });
+});
+</script>
 
 </body>
 </html>
