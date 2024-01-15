@@ -21,9 +21,7 @@
   <form id="searchForm" action="" method="post">
     <div class="flex items-center p-6 space-x-6 rounded-xl">              
       <input id="searchInput" class="bg-gray-100 outline-none" type="text" name="keyword" placeholder="Article name or keyword..." />
-      <div class="bg-green-400 py-3 px-5 text-white font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer">
-        <button type="submit" name="search">Search</button>
-      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
     </div>
   </form>
 </section>
@@ -292,36 +290,7 @@
         </div>
       </div>
     </div>
-    <script>
-document.addEventListener("DOMContentLoaded", function () {
-    var liveSearchInput = document.getElementById("searchInput");
-    var searchResult = document.getElementById("searchResults");
-
-    liveSearchInput.addEventListener("keyup", function () {
-        var input = liveSearchInput.value;
-
-        if (input !== "") {
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "../controller/search.contr.php", true);
-            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    searchResult.innerHTML = xhr.responseText;
-                    searchResult.style.display = "block";
-                }
-            };
-
-            xhr.send("query=" + encodeURIComponent(input));
-        } else {
-            searchResult.style.display = "none";
-        }
-    });
-});
-</script>
-
-
-
+    <script src="javascript/search.js"></script>
     <script src="javascript/main.js"></script>
     </body>
 

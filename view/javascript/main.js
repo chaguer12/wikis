@@ -14,3 +14,6 @@ function closeModal() {
 
 openModalBtn.addEventListener('click', openModal);
 closeModalBtn.addEventListener('click', closeModal);
+
+
+

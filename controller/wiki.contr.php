@@ -12,7 +12,9 @@ if(isset($_POST['add'])){
     $tags = $_POST['tags'];
     $image = $_FILES['image'];
     $tmp_name = $_FILES['image']['tmp_name'];
+
     $image = file_get_contents($tmp_name);
+
 
     $userEmail = $_SESSION['email'];
     $user = new UserDAO();
