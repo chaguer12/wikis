@@ -1,127 +1,64 @@
 <?php
-include '../controller/tag.contr.php';
+include '../controller/category.contr.php';
 include '../controller/wiki.contr.php';
+include '../controller/tag.contr.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
-    <!-- <link rel="icon" type="image/png" sizes="16x16" href="/view/img/favicon-16x16.png"> -->
-    <title>Wikimedia Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Feed</title>
 </head>
-<body class="bg-blueGray-50">
 <?php include 'includes/nav.php'; ?>
- 
-    <section class="relative pt-16 bg-blueGray-50">
-    <div class="container mx-auto text-center">
-            <h1 class="text-4xl font-semibold mb-2 text-blue-600">Got an idea? Join Wikimedia</h1>
-            <p class="text-lg text-gray-400 mb-8">Our top categories</p>
-        </div>
-<div class="container mx-auto">
-  
-<div class="grid gap-16 md:grid-cols-2 grid-cols-1 gap-16">
-<?php
-include_once '../controller/category.contr.php';
-foreach($fourcategories as $cat){?>
-    <a href="categories.php" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-        <img class="object-cover w-full rounded-t-lg h-48 md:h-96 md:w-48 md:rounded-none md:rounded-s-lg" src="data:image/jpg;charset=utf8;base64,<?=  base64_encode($cat['image']); ?>" alt="">
-        <div class="flex flex-col justify-between p-4 leading-normal">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><?php echo $cat['cat_name']; ?></h5>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-        </div>
-    </a>
-<?php
-}
-?>
 
+<body class="bg-blueGray-50">
+    <section class="flex flex-row flex-wrap mx-auto">
 
+        <!-- Single Card Component -->
+        <?php
+        $wikiOBJ = new WikiDAO();
 
-</div>
+        if (isset($_GET['wiki_id'])) {
+            $result = $wikiOBJ->Get_wiki($_GET['wiki_id']);
+        }
 
-</div>
-
-</section>
-
-<section class="flex flex-row flex-wrap mx-auto">
-<div class="container mx-auto text-center p-8">
-              <h1 class="text-4xl font-semibold mb-2 text-blue-600">Explore latest articles</h1>
-              <p class="text-lg text-gray-400 mb-8">we are bringing you the latest articles</p>
-          </div>
-    <!-- Single Card Component -->
-    <?php
-            $wikiOBJ = new WikiDAO();
-            $result = $wikiOBJ->get3Wikis();
-            foreach($result as $article){
+        foreach ($result as $article) {
         ?>
-    
-    <div
-      class="transition-all duration-150 flex w-full px-4 py-6 md:w-1/2 lg:w-1/3"
-    >
-      <div
-        class="flex flex-col items-stretch w-96 min-h-full pb-4 mb-6 transition-all duration-150 bg-white rounded-lg shadow-lg hover:shadow-2xl"
-      >
-        <div class="md:flex-shrink-0">
-          <img
-          src="data:image/jpg;charset=utf8;base64,<?= base64_encode($article['image']); ?>"
-            alt="Blog Cover"
-            class="object-fill w-full rounded-lg rounded-b-none md:h-56"
-          />
-        </div>
-        <div class="flex items-center justify-between px-4 py-2 overflow-hidden">
-          <span class="text-xs font-medium text-blue-600 uppercase">
-          <?php echo $article['cat_name']; ?>
-          </span>
-          
-        </div>
-        <hr class="border-gray-300" />
-        <div class="flex flex-wrap items-center flex-1 px-4 py-1 text-center mx-auto">
-          <a href="categories.php" class="hover:underline">
-            <h2 class="text-2xl font-bold tracking-normal text-gray-800">
-            <?php echo $article['titre']; ?>
-            </h2>
-          </a>
-        </div>
-        <hr class="border-gray-300" />
-        <p
-          class="flex flex-row flex-wrap w-full px-4 py-2 overflow-hidden text-sm text-justify text-gray-700"
-        >
-        <?php echo $article['contenu']; ?>
-        </p>
-        <hr class="border-gray-300" />
-        <section class="px-4 py-2 mt-2">
-          <div class="flex items-center justify-between">
-            <div class="flex justify-between flex-1">
-             
-              
-                  <?php include 'includes/edit.php'; ?>
-                  <?php include 'includes/archive.php'; ?>
-           
-            </div>
-            
-          </div>
-        </section>
-      </div>
-    </div>
-    
-    
-    
-    </div>
-    <?php
-            }
-          ?>
-  
-  
-</section>
+            <section>
 
-        
+                <div class="container my-8  md:px-6">
+                    <!-- Section: Design Block -->
+                    <div class="container  p-8">
+                        <h1 class="text-4xl font-semibold mb-2 text-blue-600"><?php echo $article['titre']; ?></h1>
+                        <p class="text-lg text-gray-400 mt-8">we are bringing you the latest articles</p>
+                    </div>
+                    <section class="mb-32">
+                        <img src="data:image/jpg;charset=utf8;base64,<?= base64_encode($article['image']); ?>" class="mb-6 w-full  rounded-lg shadow-lg dark:shadow-black/20" alt="image" />
+
+
+                        <span> Categorie</span>
+                        <a href="categories.php" class="font-medium"> <?php echo $article['cat_name']; ?></a>
+                    </section>
+
+                    <p class="text-lg text-gray-600  my-16 ">
+                        <?php echo $article['contenu']; ?>
+                    </p>
+                </div>
+            </section>
+
+        <?php
+        }
+        ?>
+    </section>
 
     
-<footer>
+
+    <footer>
   <div class="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
     <div class="flex justify-center text-teal-600">
       <img src="view/image/logo.png" class="w-32" alt="">
@@ -238,7 +175,7 @@ foreach($fourcategories as $cat){?>
         </button>
 
         <!-- Modal Content - Form -->
-        <form class="space-y-4" enctype="multipart/form-data" method="post" action="../controller/wiki.contr.php">
+        <form class="space-y-4"  method="post" action="../controller/wiki.contr.php" enctype="multipart/form-data">
           <!-- Form Fields -->
           <div class="mb-4">
             <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
@@ -309,9 +246,8 @@ foreach($fourcategories as $cat){?>
     </div>
   </div>
 
+    <script src="javascript/main.js"></script>
 
-    
-
-<script src="javascript/main.js"></script> 
 </body>
+
 </html>

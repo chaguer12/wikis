@@ -1,6 +1,6 @@
 <?php
-include '../controller/category.contr.php';
 include 'includes/session.php';
+include '../controller/category.contr.php';
 ?>
 
 <!DOCTYPE html>

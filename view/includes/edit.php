@@ -6,10 +6,10 @@ include "../controller/user.contr.php";
 
 
 
-if (isset($_SESSION['user_id']) && isset($user['user_id']) && $_SESSION['user_id'] === $user['user_id']) {
+if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $article['user_id'] && $_SESSION['role'] !== 'admin') {
     ?>
         
-    <form action="../controller/wiki.contr.php" method="post" enctype="multipart/form-data">
+    <form action="" method="post" enctype="multipart/form-data">
         <input type="text" name="id_wiki" hidden value="<?php echo $article['wiki_id'] ?>">
         <button type="submit" name="delete" class="bg-red-600 text-white rounded-lg py-1.5 px-2">delete</button>
     </form>

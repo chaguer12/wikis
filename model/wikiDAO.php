@@ -33,20 +33,46 @@ class WikiDAO{
     }
     public function Delet_wiki($wiki_id) {
         $stmt = $this->db->prepare("DELETE FROM wikis WHERE wiki_id = :wiki_id");
-        $stmt->bindParam(":wiki_id", $wik_id);
+        $stmt->bindParam(":wiki_id", $wiki_id);
         $stmt->execute();
+    }
+    public function Search($keyword){
+        $stmt = $this->db->prepare(
+        "SELECT DISTINCT w.*, c.*
+        FROM wikis w
+        JOIN categories c ON w.cat_id = c.cat_id
+        JOIN wiki_tags wt ON wt.wiki_id = w.wiki_id
+        JOIN tags t ON t.tag_id = wt.tag_id
+        WHERE
+        w.titre LIKE CONCAT('%', :keyword, '%') OR
+        c.cat_name LIKE CONCAT('%', :keyword, '%') OR
+        t.tag_name LIKE CONCAT('%', :keyword, '%')");
+
+        $stmt->bindParam(":keyword",$keyword);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        
+        return $result;
     }
     public function CountWikis(){
         $stmt = $this->db->query("SELECT count(wiki_id) as count FROM `wikis`;");
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $result; 
+        return $result ?? 'count'; 
     }
     public function Get_wiki($wiki_id){
-        $stmt = $this->db->prepare("SELECT * FROM wikis WHERE wiki_id = :wiki_id");
+        $stmt = $this->db->prepare("SELECT *  FROM wikis INNER JOIN categories ON wikis.cat_id = categories.cat_id WHERE wikis.wiki_id = :wiki_id ");
         $stmt->bindParam(":wiki_id",$wiki_id);
         $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+    public function Get_wiki_cat($cat_id){
+        $stmt = $this->db->prepare("SELECT *  FROM wikis INNER JOIN categories ON wikis.cat_id = categories.cat_id WHERE wikis.cat_id = :cat_id AND wikis.status = 0 ORDER BY wikis.wiki_date DESC;");
+        $stmt->bindParam(":cat_id",$cat_id);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
     public function getWikis(){
@@ -77,7 +103,7 @@ class WikiDAO{
         
     }
     public function getWiki($wiki_id){
-        $stmt = $this->db->prepare("SELECT * FROM wikis WHERE status = 0 AND wiki_id = :wiki_id");
+        $stmt = $this->db->prepare("SELECT * FROM wikis WHERE  wiki_id = :wiki_id AND status = 0");
         $stmt->bindParam(":wiki_id",$wiki_id);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);

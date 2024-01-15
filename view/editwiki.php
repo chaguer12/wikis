@@ -2,6 +2,8 @@
   include '../controller/category.contr.php';
   include '../controller/wiki.contr.php';
   include '../controller/tag.contr.php';
+  $targetWiki = $wiki->getWiki($_GET['wiki_id']);
+  // print_r($targetWiki); 
   ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +30,7 @@ include 'includes/nav.php';
               id="title"
               name="title"
               class="mt-1 p-2 w-full border rounded-md"
-              placeholder="Enter the title"
+              placeholder="<?php echo $targetWiki[0]['titre'] ?>"
             />
           </div>
 
@@ -38,11 +40,12 @@ include 'includes/nav.php';
               id="content"
               name="content"
               class="mt-1 p-2 w-full border rounded-md"
-              placeholder="Enter the content"
-            ></textarea>
+              placeholder=""
+             
+            ><?php echo $targetWiki[0]['contenu'] ?></textarea>
           </div>
           <div class="mb-4">
-            <label for="content" class="block text-sm font-medium text-gray-700">Category</label>
+            <label for="category" class="block text-sm font-medium text-gray-700">Category</label>
             <select class="w-full" name="category" id="">
             <?php foreach($categories as $categorie){ ?>
               <option value="<?php echo $categorie['cat_id']; ?>"><?php echo $categorie['cat_name']; ?></option>
@@ -51,7 +54,7 @@ include 'includes/nav.php';
           </select>
           </div>
           <div class="mb-4">
-            <label for="content" class="block text-sm font-medium text-gray-700">Tags</label>
+            <label for="tags" class="block text-sm font-medium text-gray-700">Tags</label>
             <div class="grid grid-cols-4 gap-2 bg-blue-100 text-blue-800 text-xs rounded ">
             <?php foreach ($tags as $tag) {
               ?>

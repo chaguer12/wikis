@@ -37,6 +37,7 @@ class UserDAO{
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result['user_id'];
     }
+    
     public function Get_user($user_id){
         $stmt = $this->db->prepare("SELECT * FROM users WHERE user_id = :user_id");
         $stmt->bindParam(":user_id",$user_id);
