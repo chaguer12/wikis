@@ -80,7 +80,7 @@ foreach($fourcategories as $cat){?>
         </div>
         <hr class="border-gray-300" />
         <div class="flex flex-wrap items-center flex-1 px-4 py-1 text-center mx-auto">
-          <a href="categories.php" class="hover:underline">
+          <a href="wiki.php?wiki_id=<?php echo $article['wiki_id'] ?>" class="hover:underline">
             <h2 class="text-2xl font-bold tracking-normal text-gray-800">
             <?php echo $article['titre']; ?>
             </h2>

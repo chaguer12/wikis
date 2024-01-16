@@ -25,6 +25,8 @@ include '../controller/tag.contr.php';
 
         if (isset($_GET['wiki_id'])) {
             $result = $wikiOBJ->Get_wiki($_GET['wiki_id']);
+        }else{
+          header('location: feed.php');
         }
 
         foreach ($result as $article) {

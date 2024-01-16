@@ -29,7 +29,7 @@ if (isset($_POST['query'])) {
 
     // Check if results exist
     if (empty($searchResults)) {
-        $results .= '<tr><td colspan="2" class="no-results text-blue-600">No results found for your query: <strong class="text-black">' . htmlspecialchars($searchText) . '</strong></td></tr>';
+        $results .= '<tr><td colspan="2" class="no-results text-red-600">No results found for your query: <strong class="text-black">' . htmlspecialchars($searchText) . '</strong></td></tr>';
     } else {
         // Loop through each result and format it
         foreach ($searchResults as $result) {
